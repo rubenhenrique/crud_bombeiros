@@ -1,7 +1,3 @@
-<link href="<?php echo base_url('includes/css/bootstrap.min.css'); ?>" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-
 <div class="container col-md-3">
 
 <?php echo isset ($dados_usuario) ? form_open(base_url() .'Usuarios/atualizar?id='.$dados_usuario->id, 'id="form-usuarios"') : form_open(base_url() .'Usuarios/inserir', 'id="form-usuarios"'); ?>

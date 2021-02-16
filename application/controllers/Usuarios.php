@@ -38,7 +38,8 @@ class Usuarios extends CI_Controller {
 	    $this->load->helper('form');
 	    //$data['titulo'] = "CRUD com CodeIgniter | Cadastro de usuário";
 	    //$data['usuarios'] = $this->model->listar();
-	    $this->load->view('usuarios/novo.php', $data);
+	   // $this->load->view('usuarios/novo.php', $data);
+	    $this->template->load('template', 'usuarios/novo.php',$data);
 
 		}
 	
@@ -103,7 +104,8 @@ class Usuarios extends CI_Controller {
 		$data['sucesso']=  $mensagem ['sucesso'];
 		}
 
-		$this->load->view('usuarios/novo.php', $data);
+		//$this->load->view('usuarios/novo.php', $data);
+		$this->template->load('template', 'usuarios/novo.php',$data);
 
 		}
 	
@@ -156,7 +158,8 @@ class Usuarios extends CI_Controller {
 	    $this->load->helper('form');
 	    $data['titulo'] = "CRUD com CodeIgniter | Cadastro de usuário";
 	    $data['usuarios'] = $this->model->listar();
-	    $this->load->view('usuarios/listar.php', $data);
+	    //$this->load->view('usuarios/listar.php', $data);
+	    $this->template->load('template', 'usuarios/listar.php',$data);
 	
 	}	
 

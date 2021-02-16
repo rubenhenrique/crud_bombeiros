@@ -45,6 +45,15 @@ class Login extends CI_Controller {
 
 	    //$this->load->view('usuarios/listar.php', $data);
 	
+	}
+
+
+	function logoff() {
+
+		 $this->session->sess_destroy();
+
+   		 $this->index();
+
 	}			
 
 

@@ -1,7 +1,5 @@
-<link href="<?php echo base_url('includes/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
-
-<div id="grid-usuarios">
+  <div id="grid-usuarios">
 	<div class="container col-md-3">
 		<br><br>
 		
@@ -14,7 +12,7 @@
 
 		<?php  } ?>
   <!-- Table -->
-		  <table  class="table table-striped">
+		  <table  class="table table-striped" id="usuarios">
 		  
 		   <thead>
 			    <tr>
@@ -57,5 +55,24 @@
 			
 			</table>
 
+			<script>
+
+					$(document).ready(function() {
+					    $('#usuarios').DataTable( {
+					        "paging":   false,
+
+					        "language": {
+					            "lengthMenu": "Display _MENU_ records per page",
+					            "zeroRecords": "Nada encontrado",
+					            "search": "Buscar",
+					            "info": "Listando página _PAGE_ of _PAGES_",
+					            "infoEmpty": "No records available",
+					            "infoFiltered": "(filtered from _MAX_ total records)"
+        					}
+
+					    } );
+					} );
+
+			</script>	
 	</div>
 </div>
