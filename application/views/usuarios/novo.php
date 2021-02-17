@@ -1,4 +1,7 @@
+
 <div class="container col-md-3">
+
+<h5><?php echo $titulo ?></h5>
 
 <?php echo isset ($dados_usuario) ? form_open(base_url() .'Usuarios/atualizar?id='.$dados_usuario->id, 'id="form-usuarios"') : form_open(base_url() .'Usuarios/inserir', 'id="form-usuarios"'); ?>
   <div class="form-group">
@@ -23,6 +26,10 @@
   <div class="form-group">
     <label for="senha">Senha</label>
     <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha">
+  </div>
+  <div class="form-group">
+    <label for="senha">Confirmar senha</label>
+    <input type="password" class="form-control" id="senhaconf" name="senhaconf" placeholder="Digite a confirmação da senha">
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
 <?php echo form_close(); ?>

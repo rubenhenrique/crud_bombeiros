@@ -1,61 +1,57 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+	<?php
+	defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+	class Login extends CI_Controller {
 
-	function __construct()
-	    {
-	        parent::__construct();
-	        $this->load->model('Usuarios_model', 'model', TRUE);
-	    }
+		function __construct()
+		    {
+		        parent::__construct();
+		        $this->load->model('Usuarios_model', 'model', TRUE);
+		    }
 
-	function index($mensagem = null) {
+		function index($mensagem = null) {
 
-		$data [] = null;
+			$data [] = null;
 
-		if( isset($mensagem ['erros'])) {
-			$data['erros']=  $mensagem ['erros'];
+			if( isset($mensagem ['erros'])) {
+				$data['erros']=  $mensagem ['erros'];
+			}
+
+		     $this->load->view('login/index.php',$data);
+		
 		}
 
-	     $this->load->view('login/index.php',$data);
+		function logar() {
 
-	    //$this->load->view('usuarios/listar.php', $data);
-	
-	}
+		    
+			$data['email'] = $this->input->post('email');
+			$data['senha'] = md5($this->input->post('senha'));
 
-	function logar() {
+			$resultado = $this->model->logar($data);
 
-	    
-		$data['email'] = $this->input->post('email');
-		$data['senha'] = md5($this->input->post('senha'));
+			if ( $resultado != null) { 
 
-		$resultado = $this->model->logar($data);
+				$this->session->set_userdata('usuario',get_object_vars($resultado));
+				redirect('usuarios');
 
-		if ( $resultado != null) { 
+			}else {
 
-			$this->session->set_userdata('usuario',get_object_vars($resultado));
-			redirect('usuarios');
+				$mensagem['erros'] = 'Login invalido';
+				$this->index($mensagem);
 
-		}else {
-
-			$mensagem['erros'] = 'Login invalido';
-			$this->index($mensagem);
-
+			}
+		
 		}
 
-	    //$this->load->view('usuarios/listar.php', $data);
-	
+
+		function logoff() {
+
+			 $this->session->sess_destroy();
+
+	   		 $this->index();
+
+		}			
+
+
+
 	}
-
-
-	function logoff() {
-
-		 $this->session->sess_destroy();
-
-   		 $this->index();
-
-	}			
-
-
-
-}

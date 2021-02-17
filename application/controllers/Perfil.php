@@ -13,11 +13,7 @@ class Perfil extends CI_Controller {
 
 	    $this->load->helper('form');
 
-	    return $this->model->listar();
-	    //$this->load->view('usuarios/listar.php', $data);
-	
+	    return $this->model->listar();	
 	}	
-
-
 
 }
